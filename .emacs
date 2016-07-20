@@ -21,7 +21,7 @@
 (require 'column-marker)
 (set-face-background 'column-marker-1 "red")
 (column-marker-1 fill-column)
-(add-hook `after-change-major-mode-hook
+(add-hook 'after-change-major-mode-hook
           (lambda () (interactive)
             (column-marker-1 fill-column)))
 
