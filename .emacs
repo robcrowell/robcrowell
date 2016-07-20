@@ -1,4 +1,4 @@
-add package repository and enable dropping files in ~/.emacs.d/lisp/
+;add package repository and enable dropping files in ~/.emacs.d/lisp/
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (require 'package)
 (add-to-list 'package-archives
@@ -28,8 +28,6 @@ add package repository and enable dropping files in ~/.emacs.d/lisp/
 (require 'whitespace)
 (setq whitespace-line-column fill-column)
 (setq whitespace-style (quote (face tab-mark trailing lines)))
-(custom-set-faces
- '(whitespace-line ((t (:foreground "lime green" :slant italic)))))
 (global-whitespace-mode t)
 
 ;https://raw.githubusercontent.com/illusori/emacs-flymake-cursor/master/flymake-cursor.el
@@ -46,6 +44,10 @@ add package repository and enable dropping files in ~/.emacs.d/lisp/
       (list pycodechecker (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pycodecheck-init)))
+(add-hook 'python-mode-hook 'flymake-mode)
+
+(custom-set-faces
+ '(flymake-errline ((t (:inherit error :foreground "limegreen"))))
+ '(whitespace-line ((t (:foreground "limegreen" :slant italic)))))
 (custom-set-variables
  '(flymake-cursor-error-display-delay 0))
-(add-hook 'python-mode-hook 'flymake-mode)
