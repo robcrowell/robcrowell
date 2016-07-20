@@ -1,4 +1,9 @@
+add package repository and enable dropping files in ~/.emacs.d/lisp/
 (add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
 ;use SHIFT+<left> to go to the left buffer
 (windmove-default-keybindings)
@@ -26,3 +31,21 @@
 (custom-set-faces
  '(whitespace-line ((t (:foreground "lime green" :slant italic)))))
 (global-whitespace-mode t)
+
+;https://raw.githubusercontent.com/illusori/emacs-flymake-cursor/master/flymake-cursor.el
+(require 'flymake)
+(load-library "flymake-cursor")
+(setq pycodechecker "pychecker")   ;requires $PATH/pychecker.sh to exist
+(when (load "flymake" t)
+  (defun flymake-pycodecheck-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list pycodechecker (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pycodecheck-init)))
+(custom-set-variables
+ '(flymake-cursor-error-display-delay 0))
+(add-hook 'python-mode-hook 'flymake-mode)
