@@ -24,5 +24,5 @@
 (setq whitespace-line-column fill-column)
 (setq whitespace-style (quote (face tab-mark trailing lines)))
 (custom-set-faces
- '(whitespace-line ((t (:foreground "violet")))))
+ '(whitespace-line ((t (:foreground "lime green" :slant italic)))))
 (global-whitespace-mode t)
