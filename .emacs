@@ -20,7 +20,8 @@
 ;https://www.emacswiki.org/emacs/download/column-marker.el
 (require 'column-marker)
 (set-face-background 'column-marker-1 "red")
-(add-hook 'python-mode-hook
+(column-marker-1 fill-column)
+(add-hook `after-change-major-mode-hook
           (lambda () (interactive)
             (column-marker-1 fill-column)))
 
@@ -47,7 +48,7 @@
 (add-hook 'python-mode-hook 'flymake-mode)
 
 (custom-set-faces
- '(flymake-errline ((t (:inherit error :foreground "limegreen"))))
+ '(flymake-errline ((t (:foreground "limegreen" :slant italic))))
  '(whitespace-line ((t (:foreground "limegreen" :slant italic)))))
 (custom-set-variables
  '(flymake-cursor-error-display-delay 0))
