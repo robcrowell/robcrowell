@@ -5,10 +5,6 @@
              '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-;show longer buffer names
-;(require 'uniquify)
-;(setq uniquify-buffer-name-style 'reverse)
-
 ;use SHIFT+<left> to go to the left buffer
 (windmove-default-keybindings)
 
