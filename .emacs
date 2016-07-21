@@ -5,6 +5,10 @@
              '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+;show longer buffer names
+;(require 'uniquify)
+;(setq uniquify-buffer-name-style 'reverse)
+
 ;use SHIFT+<left> to go to the left buffer
 (windmove-default-keybindings)
 
@@ -47,7 +51,16 @@
 (add-hook 'python-mode-hook 'flymake-mode)
 
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(flymake-errline ((t (:foreground "limegreen" :slant italic))))
  '(whitespace-line ((t (:foreground "limegreen" :slant italic)))))
 (custom-set-variables
- '(flymake-cursor-error-display-delay 0))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flymake-cursor-error-display-delay 0)
+ '(flymake-log-level 1))
