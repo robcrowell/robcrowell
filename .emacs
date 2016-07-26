@@ -58,6 +58,7 @@
  '(flymake-errline ((t (:foreground "limegreen" :slant italic))))
  '(font-lock-function-name-face ((t (:foreground "DodgerBlue"))))
  '(font-lock-string-face ((t (:foreground "yellow"))))
+ '(isearch-fail ((t (:background "deep pink"))))
  '(whitespace-line ((t (:foreground "limegreen" :slant italic)))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -66,4 +67,4 @@
  ;; If there is more than one, they won't work right.
  '(flymake-cursor-error-display-delay 0)
  '(flymake-log-level 1))
-
+ 
