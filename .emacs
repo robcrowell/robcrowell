@@ -8,10 +8,6 @@
 ;; use SHIFT+<left> to go to the left buffer
 (windmove-default-keybindings)
 
-;; make it easier to locate files
-(require 'ido)
-(ido-mode t)
-
 ;; fuck tabs
 (setq-default indent-tabs-mode nil)
 
@@ -50,6 +46,31 @@
                '("\\.py\\'" flymake-pycodecheck-init)))
 (add-hook 'python-mode-hook 'flymake-mode)
 
+;; html and js modes
+(require 'mmm-mode)
+(setq mmm-global-mode 'maybe)
+(mmm-add-group
+ 'fancy-html
+ '(
+   (html-css-embedded
+    :submode css-mode
+    :face mmm-declaration-submode-face
+    :front "<style>"
+    :back "</style>")
+   (html-javascript-embedded
+    :submode js-mode
+    :face mmm-code-submode-face
+    :front "<script>"
+    :back "</script>")
+   (html-python-embedded
+    :submode python-mode
+    :face mmm-code-submode-face
+    :front "<%"
+    :back "%>")
+   )
+ )
+(add-to-list 'mmm-mode-ext-classes-alist '(html-mode nil fancy-html))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -59,6 +80,9 @@
  '(font-lock-function-name-face ((t (:foreground "DodgerBlue"))))
  '(font-lock-string-face ((t (:foreground "yellow"))))
  '(isearch-fail ((t (:background "deep pink"))))
+ '(mmm-code-submode-face ((t nil)))
+ '(mmm-declaration-submode-face ((t nil)))
+ '(mmm-default-submode-face ((t nil)))
  '(whitespace-line ((t (:foreground "limegreen" :slant italic)))))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -67,4 +91,3 @@
  ;; If there is more than one, they won't work right.
  '(flymake-cursor-error-display-delay 0)
  '(flymake-log-level 1))
- 
